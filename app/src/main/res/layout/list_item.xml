@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="2dp"
+    app:cardCornerRadius="10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="159dp">
+
+        <ImageView
+            android:id="@+id/moviePoster"
+            android:layout_width="100dp"
+            android:layout_height="130dp"
+            android:layout_alignTop="@+id/movieHeader"
+            android:layout_marginEnd="-113dp"
+            android:layout_marginRight="-113dp"
+            android:layout_toLeftOf="@+id/movieHeader"
+            android:layout_toStartOf="@+id/movieHeader"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_img"/>
+
+        <TextView
+            android:id="@+id/movieHeader"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="129dp"
+            android:layout_marginStart="129dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/movie_title" />
+
+        <TextView
+            android:id="@+id/movieDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/imageView"
+            android:layout_alignStart="@+id/movieHeader"
+            android:text="@string/movie_desc"
+            android:layout_marginRight="40dp"
+            android:maxLength="30"
+            android:layout_alignLeft="@+id/movieHeader" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:layout_alignBottom="@+id/moviePoster"
+            android:layout_alignStart="@+id/movieHeader"
+            android:layout_alignLeft="@+id/movieHeader">
+
+            <TextView
+                android:id="@+id/movieRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_weight="1"
+                android:background="@color/colorPrimary"
+                android:text="@string/movie_rating"
+                android:textColor="#ffffff" />
+
+            <TextView
+                android:id="@+id/releaseDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:textAlignment="center"
+                android:text="@string/release_date" />
+
+            <TextView
+                android:id="@+id/movieLanguage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:background="@color/colorAccent"
+                android:text="@string/lang"
+                android:textColor="#ffffff" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="13dp"
+            app:srcCompat="@drawable/ic_arrow_right_24dp"
+            android:layout_alignParentRight="true"
+            tools:ignore="VectorDrawableCompat"
+            android:layout_marginRight="13dp" />
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

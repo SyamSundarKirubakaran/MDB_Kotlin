@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MoviesApp</string>
+    <string name="app_title">Popular Movies</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="movie_desc">Movie Description</string>
+    <string name="movie_rating">4.9</string>
+    <string name="release_date">21st August 2018</string>
+    <string name="lang">EN</string>
+    <string name="search">Search</string>
+    <string name="refresh">Refresh</string>
+    <string name="sample_desc">This is the Movies Description</string>
+</resources>
