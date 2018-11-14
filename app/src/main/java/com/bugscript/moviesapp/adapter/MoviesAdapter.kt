@@ -12,6 +12,7 @@ import com.bugscript.moviesapp.data.Movie
 import com.squareup.picasso.Picasso
 
 class MoviesAdapter(val context : Context,val movieList : ArrayList<Movie>, val itemClick : (Movie) -> Unit) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {
+
     override fun onCreateViewHolder(p0: ViewGroup, p1: Int): ViewHolder {
         val view = LayoutInflater.from(context).inflate(R.layout.list_item,p0,false)
         return ViewHolder(view, itemClick)
@@ -44,6 +45,12 @@ class MoviesAdapter(val context : Context,val movieList : ArrayList<Movie>, val 
                     .into(poster)
             itemView.setOnClickListener { itemClick(movie) }
         }
+    }
+
+    fun updateList(newList : ArrayList<Movie>){
+        movieList.clear()
+        movieList.addAll(newList)
+        notifyDataSetChanged()
     }
 
 }
