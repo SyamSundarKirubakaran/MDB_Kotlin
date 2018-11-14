@@ -1,169 +1,173 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".model.DetailsActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        tools:context=".model.DetailsActivity">
 
-        <ImageView
-            android:id="@+id/imageView2"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_alignParentLeft="true"
+            android:layout_height="match_parent"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:scaleType="centerCrop"
-            app:srcCompat="@drawable/placeholder_img" />
+            android:id="@+id/mainView"
+            android:layout_alignParentTop="true">
 
-        <TextView
-            android:id="@+id/detailsMovieDesc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="23dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="212dp"
-            android:text="@string/sample_desc" />
-
-        <LinearLayout
-            android:id="@+id/linearRate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/detailsMovieDesc"
-            android:layout_alignStart="@+id/detailsMovieDesc"
-            android:layout_below="@+id/detailsMovieDesc"
-            android:layout_marginTop="16dp"
-            android:paddingRight="30dp">
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/placeholder_img" />
 
             <TextView
-                android:id="@+id/detailsRunTime"
+                android:id="@+id/detailsMovieDesc"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="142 minutes" />
-
-            <TextView
-                android:id="@+id/detailsReleaseDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:text="12st August 2018" />
-
-            <TextView
-                android:id="@+id/detailsRating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:background="@color/colorPrimary"
-                android:text="4.9"
-                android:textAlignment="center"
-                android:textColor="#ffffff" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/detailslinearLang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/linearRate"
-            android:layout_marginLeft="23dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="8dp"
-            android:paddingRight="30dp">
-
-            <TextView
-                android:id="@+id/detailsMovieType"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:text="Drama, Crime" />
-
-            <TextView
-                android:id="@+id/detailsMovieLanguage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@color/colorAccent"
-                android:text="EN"
-                android:textAllCaps="true"
-                android:textAlignment="center"
-                android:textColor="#ffffff" />
-        </LinearLayout>
-
-        <android.support.v7.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/detailslinearLang"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="3dp"
-            app:cardUseCompatPadding="true">
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="312dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:text="@string/sample_desc" />
 
             <LinearLayout
+                android:id="@+id/linearRate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_alignLeft="@+id/detailsMovieDesc"
+                android:layout_alignStart="@+id/detailsMovieDesc"
+                android:layout_below="@+id/detailsMovieDesc"
+                android:layout_marginTop="16dp"
+                android:paddingRight="30dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/detailsRunTime"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_weight="3"
+                    android:paddingLeft="16dp"
+                    android:text="142 minutes" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:text="Budget"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="30dp"
-                        android:text="$25 Million" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/detailsReleaseDate"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:layout_marginTop="10dp">
+                    android:layout_weight="3"
+                    android:text="12st August 2018" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:text="Revenue"
-                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="20dp"
-                        android:text="$58.3 Million" />
-
-                </LinearLayout>
-
+                <TextView
+                    android:id="@+id/detailsRating"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
+                    android:text="4.9"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff" />
             </LinearLayout>
 
+            <LinearLayout
+                android:id="@+id/detailslinearLang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/linearRate"
+                android:layout_marginTop="8dp"
+                android:paddingRight="30dp">
 
-        </android.support.v7.widget.CardView>
+                <TextView
+                    android:id="@+id/detailsMovieType"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:paddingLeft="16dp"
+                    android:text="Drama, Crime" />
 
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/detailsMovieLanguage"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:background="@color/colorAccent"
+                    android:text="EN"
+                    android:textAllCaps="true"
+                    android:textAlignment="center"
+                    android:textColor="#ffffff" />
+            </LinearLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/detailslinearLang"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="Budget"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+                        <TextView
+                            android:id="@+id/movieBudget"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="30dp"
+                            android:text="$25 Million" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:text="Revenue"
+                            android:textAppearance="@style/Base.TextAppearance.AppCompat.Title" />
+
+                        <TextView
+                            android:id="@+id/movieRevenue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="20dp"
+                            android:text="$58.3 Million" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
 
-</RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+</layout>

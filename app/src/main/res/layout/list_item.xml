@@ -41,14 +41,11 @@
 
         <TextView
             android:id="@+id/movieDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/imageView"
+            android:layout_width="198dp"
+            android:layout_height="77dp"
             android:layout_alignStart="@+id/movieHeader"
-            android:text="@string/movie_desc"
-            android:layout_marginRight="40dp"
-            android:maxLength="30"
-            android:layout_alignLeft="@+id/movieHeader" />
+            android:layout_below="@+id/movieHeader"
+            android:text="@string/movie_desc" />
 
         <LinearLayout
             android:layout_width="match_parent"

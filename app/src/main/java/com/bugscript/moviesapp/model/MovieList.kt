@@ -25,22 +25,52 @@ class MovieList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.list_movie)
-
-        movieList.visibility = View.INVISIBLE
-
-        if(isNetworkAvailable()) {
-            NetworkClient.GetJsonWithOkHttpClient(POPULAR_MOVIES_URL).execute();
-            movieAdapter = MoviesAdapter(this){
-                val detailsIntent = Intent(this, DetailsActivity::class.java)
-                startActivity(detailsIntent)
+        onProgressView()
+        isNetworkAvailable{ status ->
+            if(status) {
+                NetworkClient.GetJsonWithOkHttpClient(POPULAR_MOVIES_URL) { success ->
+                    if (success) {
+                        initRecyclerView()
+                        onCompleteView()
+                    }
+                }.execute();
+            }else{
+                Toast.makeText(this, "Check your Network connection.!", Toast.LENGTH_LONG).show()
             }
-            movieList.adapter = movieAdapter
-            val layoutManager = LinearLayoutManager(this)
-            movieList.layoutManager = layoutManager
-            movieList.visibility = View.VISIBLE
-        }else{
-            Toast.makeText(this, "Check your Network connection.!", Toast.LENGTH_LONG).show()
         }
+    }
+
+    private fun initRecyclerView() {
+        movieAdapter = MoviesAdapter(this, NetworkClient.listOfMovies) { movie ->
+            val detailsIntent = Intent(this, DetailsActivity::class.java)
+            detailsIntent.putExtra("URL", generateMovieSpecificURL(movieID = movie.id))
+            detailsIntent.putExtra("OBJ",movie)
+            startActivity(detailsIntent)
+        }
+        movieList.adapter = movieAdapter
+        val layoutManager = LinearLayoutManager(this)
+        movieList.layoutManager = layoutManager
+    }
+
+    private fun onCompleteView() {
+        movieList.visibility = View.VISIBLE
+        progressBar.visibility = View.GONE
+    }
+
+    private fun onProgressView() {
+        movieList.visibility = View.INVISIBLE
+        progressBar.visibility = View.VISIBLE
+    }
+
+    private fun isNetworkAvailable(status : (Boolean) -> Unit) {
+        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
+        if (connectivityManager is ConnectivityManager) {
+            val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
+            if(networkInfo?.isConnected!!)
+                status(true)
+            else
+                status(false)
+        } else status(false)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -54,13 +84,5 @@ class MovieList : AppCompatActivity() {
             R.id.action_refresh -> true
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    private fun isNetworkAvailable(): Boolean {
-        val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE)
-        return if (connectivityManager is ConnectivityManager) {
-            val networkInfo: NetworkInfo? = connectivityManager.activeNetworkInfo
-            networkInfo?.isConnected ?: false
-        } else false
     }
 }

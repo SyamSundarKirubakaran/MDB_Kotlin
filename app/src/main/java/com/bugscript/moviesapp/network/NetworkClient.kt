@@ -17,6 +17,7 @@ import java.io.InputStreamReader
 object NetworkClient{
 
     val listOfMovies = ArrayList<Movie>()
+    lateinit var movieSpecifics : MovieDetails
 
     fun get(url: String): InputStream {
         val request = Request.Builder().url(url).build()
@@ -25,7 +26,7 @@ object NetworkClient{
         return body!!.byteStream()
     }
 
-    open class GetJsonWithOkHttpClient(val url: String) : AsyncTask<Unit, Unit, String>() {
+    open class GetJsonWithOkHttpClient(val url: String, val complete : (Boolean) -> Unit) : AsyncTask<Unit, Unit, String>() {
         override fun doInBackground(vararg params: Unit?): String? {
             val stream = BufferedInputStream(
                     NetworkClient.get(url))
@@ -47,6 +48,7 @@ object NetworkClient{
                             language = Jinside.getString("original_language"),
                             poster = Jinside.getString("poster_path")))
                 }
+                complete(true)
             }else{
                 val JA = JO.getJSONArray("genres")
                 val genres = ArrayList<String>()
@@ -54,12 +56,14 @@ object NetworkClient{
                     val Jinside = JA.getJSONObject(i)
                     genres.add(Jinside.getString("name"))
                 }
-                val details = MovieDetails(
+                movieSpecifics = MovieDetails(
                         movieID = JO.getString("id"),
                         runtime = JO.getString("runtime"),
                         movieGenres = genres,
                         budget = JO.getString("budget"),
-                        revenue = JO.getString("revenue"))
+                        revenue = JO.getString("revenue"),
+                        backdrop = JO.getString("backdrop_path"))
+                complete(true)
             }
         }
         fun readStream(inputStream: BufferedInputStream): String {
