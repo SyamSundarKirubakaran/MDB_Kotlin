@@ -1,12 +1,10 @@
 package com.bugscript.moviesapp.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.BaseAdapter
 import com.bugscript.moviesapp.R
 
 class MoviesAdapter(val context : Context, val itemClick : () -> Unit) : RecyclerView.Adapter<MoviesAdapter.ViewHolder>() {

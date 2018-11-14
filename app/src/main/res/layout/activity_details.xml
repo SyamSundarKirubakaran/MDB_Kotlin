@@ -95,6 +95,7 @@
                 android:layout_weight="1"
                 android:background="@color/colorAccent"
                 android:text="EN"
+                android:textAllCaps="true"
                 android:textAlignment="center"
                 android:textColor="#ffffff" />
         </LinearLayout>
